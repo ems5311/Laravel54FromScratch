@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PostForm;
 use App\Post;
 use Illuminate\Http\Request;
 
@@ -17,10 +18,10 @@ class PostController extends Controller
         return view('posts.create');
     }
 
-    public function store(Request $request)
+    public function store(PostForm $request)
     {
         $post = new Post;
-        $post->fill(request(['title', 'body']))->save();
+        $post->fill($request->only('title', 'body'))->save();
         return back();
     }
 }
