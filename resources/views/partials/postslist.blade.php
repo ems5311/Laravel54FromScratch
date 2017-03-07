@@ -9,9 +9,10 @@
 @endforeach
 
 <nav class="blog-pagination">
-    {{--            {{ dd($posts) }}--}}
+
     <a class="btn btn-outline-{{ $posts->currentPage() == 1 ? 'secondary disabled' : 'primary' }}"
        href="{{ $posts->previousPageUrl()  }}">Older</a>
     <a class="btn btn-outline-{{ $posts->hasMorePages() ? 'primary' : 'secondary disabled' }}"
        href="{{ $posts->nextPageUrl() }}">Newer</a>
+
 </nav>
