@@ -23,6 +23,9 @@ Route::post('/posts', 'PostController@store');
 // GET - /posts/{id} - View post number {id}
 Route::get('/posts/{post}', 'PostController@show');
 
+// POST - /posts/{id}/comments - Submit comment to post
+Route::post('/posts/{post}/comments', 'CommentController@store');
+
 // GET - /posts/{id}/edit - Show edit screen, allows editing of post {id}
 // PATCH - /posts/{id} - Update post number {id}, submit updated content to Post model
 // DELETE - /posts/{id} - Deletes post {id} from the Post model
