@@ -22,3 +22,17 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'remember_token' => str_random(10),
     ];
 });
+
+$factory->define(App\Post::class, function (Faker\Generator $faker) {
+   return [
+       'title' => $faker->sentence,
+       'body' => $faker->paragraph,
+   ];
+});
+
+$factory->define(App\Comment::class, function (Faker\Generator $faker) {
+    return [
+        'body' => $faker->paragraph,
+        'post_id' => $faker->numberBetween(0, App\Post::all()->count()),
+    ];
+});

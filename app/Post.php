@@ -18,6 +18,21 @@ class Post extends Model
         return $this->hasMany(Comment::class);
     }
 
+    /**
+     * Get the user associated with this post
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    /**
+     * Create a comment from the given body
+     *
+     * @param $body
+     */
     public function addComment($body)
     {
         $this->comments()->create(compact('body'));
