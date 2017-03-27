@@ -4,6 +4,6 @@
     </a>
 </h2>
 
-<p class="blog-post-meta">At {{ $post->updated_at->diffForHumans() }}</p>
+<p class="blog-post-meta">By {{ $post->user->name }} At {{ $post->updated_at->diffForHumans() }}</p>
 
 {{ $post->body }}

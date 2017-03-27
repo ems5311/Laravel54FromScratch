@@ -8,6 +8,11 @@ use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth')->except(['index', 'show']);
+    }
+
     /**
      * Display the main view of the site
      *
@@ -19,6 +24,17 @@ class PostController extends Controller
             ->paginate(3);
 
         return view('posts.index', compact('posts'));
+    }
+
+    /**
+     * Show the post matching the given Post (bound to $id with Route-Model Binding)
+     *
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function show(Post $post)
+    {
+        return view('posts.show', compact('post'));
     }
 
     /**
@@ -40,18 +56,11 @@ class PostController extends Controller
     public function store(PostForm $request)
     {
         $post = new Post;
-        $post->fill($request->only('title', 'body'))->save();
+        $post->fill($request->only('title', 'body'));
+        $post->user_id = auth()->id();
+
+        $post->save();
         return back();
     }
 
-    /**
-     * Show the post matching the given Post (bound to $id with Route-Model Binding)
-     *
-     * @param $id
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
-    public function show(Post $post)
-    {
-        return view('posts.show', compact('post'));
-    }
 }

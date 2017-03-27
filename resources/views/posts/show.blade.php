@@ -10,7 +10,6 @@
         <hr>
         <h3>Comments</h3>
         {{-- Create box to hold all comments --}}
-        {{--@if ($comments->count())--}}
         <ul class="list-group">
             <div class="comments">
                 @foreach ($post->comments as $comment)
