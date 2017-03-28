@@ -7,13 +7,33 @@ use Illuminate\Http\Request;
 
 class SessionController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('guest', ['except' => 'destroy']);
+    }
+
     /**
-     * Log the user in
+     * Show the login page
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function create()
     {
-        // TODO - Add a real login functionality
-        auth()->login(User::first());
+        return view('session.create');
+    }
+
+    /**
+     * Attempt to log the user in
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function store()
+    {
+        if (!auth()->attempt(request(['email', 'password']))) {
+            return back();
+        }
+
+        return redirect()->home();
     }
 
     /**

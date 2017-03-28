@@ -12,13 +12,13 @@
 
             <div class="form-group">
                 <label for="postTitle">Title</label>
-                <input type="text" class="form-control" id="postTitle" name="title" placeholder="Title">
+                <input type="text" class="form-control" id="postTitle" name="title" placeholder="Title" required>
             </div>
 
             <div class="form-group">
                 <label for="postBody">Body</label>
                 <textarea class="form-control" id="postBody"
-                          name="body" placeholder="Type your post here"></textarea>
+                          name="body" placeholder="Type your post here" required></textarea>
             </div>
 
             <div class="form-group">

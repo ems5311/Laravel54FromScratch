@@ -46,4 +46,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Comment::class);
     }
+
+    public function publish(Post $post)
+    {
+        $this->posts()->save($post);
+    }
 }

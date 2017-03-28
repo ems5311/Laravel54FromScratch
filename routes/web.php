@@ -39,5 +39,8 @@ Route::post('/register', 'RegistrationController@store');
 // GET - /login - Show 'login' page
 Route::get('/login', 'SessionController@create');
 
+// POST - /login - Log the user in
+Route::post('/login', 'SessionController@store');
+
 // GET - /logout - log the user out
 Route::get('/logout', 'SessionController@destroy');

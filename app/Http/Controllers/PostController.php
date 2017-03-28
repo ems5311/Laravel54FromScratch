@@ -55,12 +55,11 @@ class PostController extends Controller
      */
     public function store(PostForm $request)
     {
-        $post = new Post;
-        $post->fill($request->only('title', 'body'));
-        $post->user_id = auth()->id();
+        auth()->user()->publish(
+            new Post($request->only(['title', 'body']))
+        );
 
-        $post->save();
-        return back();
+        return redirect('/');
     }
 
 }
