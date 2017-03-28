@@ -6,4 +6,4 @@
 
 <p class="blog-post-meta">By {{ $post->user->name }} - {{ $post->updated_at->diffForHumans() }}</p>
 
-{{ $post->body }}
+<p style="word-break: break-all;">{{ $post->body }}</p>

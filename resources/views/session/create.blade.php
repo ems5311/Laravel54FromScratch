@@ -23,6 +23,7 @@
                 <button type="submit" class="btn btn-primary">Login</button>
             </div>
 
+            @include('partials.errors')
         </form>
     </div>
 @endsection

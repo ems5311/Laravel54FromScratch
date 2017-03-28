@@ -14,6 +14,10 @@
 // GET - / - Display list of posts
 Route::get('/', 'PostController@index')->name('home');
 
+Route::get('/home', function () {
+    return redirect()->home();
+});
+
 // GET - /posts/create - show 'Publish a Post' screen
 Route::get('/posts/create', 'PostController@create');
 
